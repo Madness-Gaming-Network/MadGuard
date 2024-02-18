@@ -1,0 +1,3 @@
+# Go here to generate token: https://github.com/settings/tokens/new?scopes=repo,write:packages
+
+export GITHUB_TOKEN=ghp_abcd1234
