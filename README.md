@@ -5,8 +5,16 @@ tl;dr A Discord bot that will manage the lifecycles of adhoc Wireguard networks 
 TODO:
 
 - Set up some way of distributing this to server that doesn't require manually building
-  - https://goreleaser.com/ci/actions/
   - https://github.com/marketplace/actions/go-release-binaries
+- https://github.com/gin-gonic/gin/blob/master/docs/doc.md
+
+To release:
+```
+git tag -a v0.1.0 -m "First release"
+git push origin v0.1.0
+```
+
+Need to automate the version incrementing part, for now it will be manual.
 
 Decisions:
 
