@@ -13,10 +13,13 @@ TODO:
   git push origin v0.1.0
   ```
   - It would be helpful to automate the version incrementing part, but for now it will be manual
-- Since this is a private repo, we'll also need to figure out how to get the correct binaries to the VPS
-  - Ideally we could just do something like `wget https://github.com/Madness-Gaming-Network/discord_bot/releases/download/v0.1.0/discord_bot_Linux_x86_64.tar.gz`
+- We'll also need to figure out how to automate getting the correct binaries to the VPS
+  - We could just do something like `wget https://github.com/Madness-Gaming-Network/discord_bot/releases/download/v0.1.0/discord_bot_Linux_x86_64.tar.gz`
   - Auth is generally a pain on remote servers, so we'll have to research or something
   - For now we can just manually `scp` the tarball/binary over
+- Pocketbase for db/auth? Much simpler.
+  - https://github.com/pocketbase/pocketbase
+  - Pro: It's also in Go
 
 Decisions:
 
