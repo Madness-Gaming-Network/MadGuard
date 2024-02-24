@@ -1,7 +1,5 @@
 # MadGuard
 
-**tl;dr** A Discord bot that will manage the lifecycles of adhoc Wireguard networks for small to large groups of gamers. When in doubt, "shift left" and "reduce".
-
 <img src="./pb_public/images/madguard.png" width="512" height="512" />
 
 ## TODO
@@ -37,6 +35,7 @@
   - Focus on getting MVP working first, then automating
   - Minimize dependencies
   - No Kubernetes until absolutely neccessary, regular VPS deploys are fine
+  - When in doubt, "shift left", "reduce scope when possible", and "the best code is no code at all"
 
 ## Potential Commands
 
