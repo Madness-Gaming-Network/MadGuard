@@ -1,0 +1,48 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    profiles: ["local"]
+    restart: unless-stopped
+    depends_on: 
+      - caddy
+    environment:
+      CGO_ENABLED: 0 
+    volumes:
+      - ./go.mod:/app/go.mod
+      - ./main.go:/app/main.go
+      - ./packages:/app/packages
+    networks:
+      - madness-gaming-network
+  pocketbase:
+    # https://github.com/pocketbase/pocketbase/issues/92#issuecomment-1962090543
+    image: spectado/pocketbase:latest
+    profiles: ["with-pocketbase"]
+    restart: unless-stopped
+    volumes:
+    - ./pb_data:/pb_data
+    - ./pb_public:/pb_public
+    - ./pb_migrations:/pb_migrations
+  caddy:
+    # https://caddyserver.com/docs/running#setup
+    image: caddy:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - madness-gaming-network
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  madness-gaming-network:  

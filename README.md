@@ -6,8 +6,8 @@ TODO:
 
 - Set up some way of distributing this to server that doesn't require manually building
   - https://github.com/marketplace/actions/go-release-binaries
-- https://github.com/gin-gonic/gin/blob/master/docs/doc.md
-- Figure out how to automate release, basic process is like:
+- Learn Gin again: https://github.com/gin-gonic/gin/blob/master/docs/doc.md
+- Figure out how to automate release, basic process is like: (change numbers based on semantic versioning)
   ```
   git tag -a v0.1.0 -m "First release"
   git push origin v0.1.0
@@ -17,9 +17,15 @@ TODO:
   - We could just do something like `wget https://github.com/Madness-Gaming-Network/discord_bot/releases/download/v0.1.0/discord_bot_Linux_x86_64.tar.gz`
   - Auth is generally a pain on remote servers, so we'll have to research or something
   - For now we can just manually `scp` the tarball/binary over
-- Pocketbase for db/auth? Much simpler.
-  - https://github.com/pocketbase/pocketbase
-  - Pro: It's also in Go
+- Set up basic Caddy config: https://github.com/caddyserver/caddy
+- Figure out basic unit/integration test setup
+- Document systemd setup for auto restarts (instead of something like pm2 for Node)
+  - https://www.linux.org/docs/man1/systemd-run.html
+- Figure out how to "publish" or Distribute bot?
+  - https://discord.com/developers/docs/getting-started
+  - https://discord.com/developers/applications
+- Optional monetization for more features?
+  - https://discord.com/developers/docs/monetization/overview
 
 Decisions:
 
