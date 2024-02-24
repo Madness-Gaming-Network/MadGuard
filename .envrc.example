@@ -1,6 +1,14 @@
-# Go here to generate token: https://github.com/settings/tokens/new?scopes=repo,write:packages
-
-export GITHUB_TOKEN=ghp_abcd1234
+# Defaults
+export SERVER_PORT=8080
+export POCKETBASE_PORT=8090
 
 # https://pocketbase.io/docs/go-overview/
 export CGO_ENABLED=0
+
+# https://discord.com/developers/applications/
+export DISCORD_APP_ID=
+export DISCORD_PUBLIC_KEY=
+export DISCORD_CLIENT_SECRET=
+
+# Used for publishing GitHub releases, generate token here: https://github.com/settings/tokens/new?scopes=repo,write:packages
+export GITHUB_TOKEN=ghp_abcd1234

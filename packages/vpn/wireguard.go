@@ -1,4 +1,4 @@
-package wireguard
+package vpn
 
 import (
 	// TODO: Which Wireguard lib?
@@ -8,6 +8,6 @@ import (
 	// https://www.wireguard.com/xplatform/
 )
 
-func Wireguard() {
+func Create() {
 	wgctrl.New()
 }

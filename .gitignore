@@ -4,9 +4,11 @@
 pb_data
 
 # Various binaries
-discord_bot
+madguard
 caddy
-main
+
+# goreleaser artifacts
+dist/
 
 # If you prefer the allow list template instead of the deny list, see community template:
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
@@ -29,5 +31,3 @@ main
 
 # Go workspace file
 go.work
-
-dist/

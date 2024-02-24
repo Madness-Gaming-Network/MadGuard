@@ -3,9 +3,11 @@ package main
 import (
 	"sync"
 
-	"github.com/Madness-Gaming-Network/discord_bot/packages/discord"
-	"github.com/Madness-Gaming-Network/discord_bot/packages/pocketbase"
-	"github.com/Madness-Gaming-Network/discord_bot/packages/server"
+	"github.com/Madness-Gaming-Network/madguard/packages/api"
+	"github.com/Madness-Gaming-Network/madguard/packages/chat"
+	"github.com/Madness-Gaming-Network/madguard/packages/core"
+	// "github.com/Madness-Gaming-Network/madguard/packages/proxy"
+	"github.com/Madness-Gaming-Network/madguard/packages/vpn"
 )
 
 func main() {
@@ -14,20 +16,24 @@ func main() {
 	waitGroup.Add(1)
 	go func() {
 		defer waitGroup.Done()
-		pocketbase.RunPocketbase()
+		core.Run()
 	}()
 
 	waitGroup.Add(1)
 	go func() {
 		defer waitGroup.Done()
-		server.RunServer()
+		api.RunServer()
 	}()
 
 	waitGroup.Add(1)
 	go func() {
 		defer waitGroup.Done()
-		discord.RunBot()
+		chat.RunBot()
 	}()
 
-	waitGroup.Wait()
+	waitGroup.Add(1)
+	go func() {
+		defer waitGroup.Done()
+		vpn.Create()
+	}()
 }

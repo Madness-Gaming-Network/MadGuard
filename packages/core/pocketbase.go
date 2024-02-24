@@ -1,6 +1,9 @@
-package pocketbase
+package core
 
 // Pocketbase for auth and DB
+// - https://pocketbase.io/docs/use-as-framework/
+// - https://pocketbase.io/docs/go-overview/
+
 // Most of this file was copied from the default:
 // https://github.com/pocketbase/pocketbase/blob/master/examples/base/main.go
 
@@ -19,7 +22,7 @@ import (
 	"github.com/pocketbase/pocketbase/plugins/migratecmd"
 )
 
-func RunPocketbase() {
+func Run() {
 	app := pocketbase.New()
 
 	// ---------------------------------------------------------------

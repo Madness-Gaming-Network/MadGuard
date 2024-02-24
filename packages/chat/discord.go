@@ -1,4 +1,4 @@
-package discord
+package chat
 
 import (
 	"log"
@@ -9,21 +9,26 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
+// TODO: Consider "interactions"?
+// https://discord.com/developers/docs/topics/community-resources#interactions
+// https://github.com/Amatsagu/Tempest
+
 func RunBot() {
+	// TODO: Fetch bot token from env var
 	token := "YOUR_BOT_TOKEN"
 	dg, err := discordgo.New("Bot " + token)
 	if err != nil {
-		log.Fatalf("Error creating Discord session: %v", err)
+		log.Fatalf("Error creating Discord session: %v\n", err)
 	}
 
 	dg.AddHandler(messageCreate)
 
 	err = dg.Open()
 	if err != nil {
-		log.Fatalf("Error opening Discord session: %v", err)
+		log.Fatalf("Error opening Discord session: %v\n", err)
 	}
 
-	log.Println("Bot is now running. Press CTRL-C to exit.")
+	log.Printf("Bot is now running. Press CTRL-C to exit\n")
 	sc := make(chan os.Signal, 1)
 	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
 	<-sc

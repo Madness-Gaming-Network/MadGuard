@@ -1,3 +1,31 @@
-# https://caddyserver.com/docs/caddyfile-tutorial
+<!-- https://caddyserver.com/docs/caddyfile-tutorial -->
 
 localhost
+
+<!-- https://dev.to/clubside/caddy-go-docker-and-a-single-page-app-5g40 -->
+<!--
+
+{
+    http_port 2010
+    servers :2015 {
+        listener_wrappers {
+            http_redirect
+            tls
+        }
+    }
+}
+https://localhost:2015 {
+    encode zstd gzip
+
+    handle /api/* {
+        reverse_proxy localhost:3000
+    }
+
+    handle {
+        root * public
+        try_files {path} index.html
+        file_server
+    }
+}
+
+-->

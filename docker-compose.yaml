@@ -18,6 +18,7 @@ services:
   pocketbase:
     # https://github.com/pocketbase/pocketbase/issues/92#issuecomment-1962090543
     image: spectado/pocketbase:latest
+    # Using profile so this doesn't start by default, see file: packages/core/pocketbase.go
     profiles: ["with-pocketbase"]
     restart: unless-stopped
     volumes:

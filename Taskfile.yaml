@@ -1,0 +1,68 @@
+# https://taskfile.dev/
+
+version: '3'
+
+dotenv: ['.envrc', '.env']
+
+env:
+  # https://pocketbase.io/docs/go-overview/
+  CGO_ENABLED: 0
+
+tasks:
+  default:
+    cmds:
+      - task --list
+      - task: build-local
+  format:
+    desc: Runs gofmt (with simplify mode)
+    cmds:
+      - gofmt -s -w .
+      - go fmt # TODO: Why doesn't `go fmt` work recursively?
+  fix:
+    desc: Runs fix https://pkg.go.dev/cmd/fix
+    cmds:
+      - go tool fix .
+  vet:
+    desc: Runs vet https://pkg.go.dev/cmd/vet
+    cmds:
+      - go vet
+  check:
+    desc: Runs several checks
+    cmds:
+      - task: format
+      - task: fix
+      - task: vet
+  build:
+    desc: Builds the project for only your currently used target
+    cmds:
+      - task: check
+      - goreleaser build --snapshot --clean --single-target
+  build-all:
+    desc: Builds the project for all targets (Mac, Windows, Linux)
+    cmds:
+      - task: check
+      - goreleaser build --snapshot --clean
+  docker:
+    desc: Runs the entire application in Docker
+    cmds:
+      - task: check
+      - docker compose --profile local up --build --remove-orphans --wait
+      - defer: docker compose down
+  run:
+    desc: Run the application locally alongside supporting Docker services
+    cmds:
+      - task: check
+      - docker compose up --build --remove-orphans --wait
+      - go run . serve
+  release:
+    desc: Generate a local-only snapshot release
+    cmds:
+      - task: vet
+      - task: release-check
+      - goreleaser release --snapshot --clean
+  release-full:
+    desc: Generate and publish a full release
+    cmds:
+      - task: check
+      - task: release-check
+      - goreleaser release --clean
