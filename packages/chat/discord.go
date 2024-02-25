@@ -30,10 +30,13 @@ func RunBot() {
 
 	log.Printf("Bot is now running. Press CTRL-C to exit\n")
 	sc := make(chan os.Signal, 1)
-	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, os.Kill)
+	signal.Notify(sc, syscall.SIGINT, syscall.SIGTERM, os.Interrupt)
 	<-sc
 
-	dg.Close()
+	err = dg.Close()
+	if err != nil {
+		log.Fatalf("Error closing Discord session: %v\n", err)
+	}
 }
 
 func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
@@ -43,5 +46,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	if m.Content == "!wgconfig" {
 		// Implement Wireguard configuration provisioning here
+		return
 	}
+
 }

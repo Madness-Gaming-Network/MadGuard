@@ -19,6 +19,8 @@ func RunServer() {
 
 	// https://gin-gonic.com/docs/quickstart/
 	// https://gin-gonic.com/docs/examples/graceful-restart-or-stop/
+	// https://github.com/gin-gonic/examples/blob/master/graceful-shutdown/graceful-shutdown/notify-with-context/server.go
+	// https://github.com/gin-gonic/examples/blob/master/graceful-shutdown/graceful-shutdown/notify-without-context/server.go
 	router := gin.Default()
 	router.GET("/", func(c *gin.Context) {
 		c.String(http.StatusOK, "Hello!")
@@ -42,8 +44,10 @@ func RunServer() {
 		}
 	}()
 
+	// TODO: Extract all this interrupt stuff into a helper?
+
 	// Wait for interrupt signal to gracefully shutdown the server with a timeout of 5 seconds.
-	quit := make(chan os.Signal)
+	quit := make(chan os.Signal, 1)
 	// kill with no args sends syscanll.SIGTERM (default)
 	// kill with -2 sends:syscall.SIGINT
 	// kill with -9 is syscall.SIGKILL but cant be caught, so we don't' add it
@@ -57,11 +61,7 @@ func RunServer() {
 		log.Fatalf("Error shutting down server: %s\n", err)
 	}
 
-	// catching ctx.Done(). timeout of 5 seconds.
-	select {
-	case <-ctx.Done():
-		log.Printf("Caught ctx.Done(), timeout of %d seconds\n", TIMEOUT_IN_SECONDS)
-	}
+	<-ctx.Done()
+	log.Printf("Caught ctx.Done(), timeout of %d seconds, exiting...\n", TIMEOUT_IN_SECONDS)
 
-	log.Printf("Server exiting\n")
 }

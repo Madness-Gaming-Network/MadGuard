@@ -32,6 +32,7 @@ tasks:
       - task: format
       - task: fix
       - task: vet
+      - golangci-lint run
   build:
     desc: Builds the project for only your currently used target
     cmds:
@@ -47,12 +48,13 @@ tasks:
     cmds:
       - task: check
       - docker compose --profile local up --build --remove-orphans --wait
-      - defer: docker compose down
+      - defer: docker compose down --remove-orphans --volumes --rmi "local"
   run:
     desc: Run the application locally alongside supporting Docker services
     cmds:
       - task: check
       - docker compose up --build --remove-orphans --wait
+      - defer: docker compose down --remove-orphans --volumes --rmi "local"
       - go run . serve
   release:
     desc: Generate a local-only snapshot release

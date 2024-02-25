@@ -8,6 +8,10 @@ import (
 	// https://www.wireguard.com/xplatform/
 )
 
-func Create() {
-	wgctrl.New()
+func Create() (*wgctrl.Client, error) {
+	client, err := wgctrl.New()
+	if err != nil {
+		return nil, err
+	}
+	return client, nil
 }

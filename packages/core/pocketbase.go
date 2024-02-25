@@ -93,7 +93,10 @@ func Run() {
 		"the default SELECT queries timeout in seconds",
 	)
 
-	app.RootCmd.ParseFlags(os.Args[1:])
+	err := app.RootCmd.ParseFlags(os.Args[1:])
+	if err != nil {
+		log.Printf("Error parsing flags: %s\n", err)
+	}
 
 	// ---------------------------------------------------------------
 	// Plugins and hooks:
@@ -128,7 +131,7 @@ func Run() {
 		return nil
 	})
 
-	if err := app.Start(); err != nil {
+	if err = app.Start(); err != nil {
 		log.Fatal(err)
 	}
 }
