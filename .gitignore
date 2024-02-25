@@ -4,7 +4,7 @@
 pb_data
 
 # Various binaries
-madguard
+MadGuard
 caddy
 
 # goreleaser artifacts

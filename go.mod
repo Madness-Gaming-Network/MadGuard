@@ -1,4 +1,4 @@
-module github.com/Madness-Gaming-Network/madguard
+module github.com/Madness-Gaming-Network/MadGuard
 
 go 1.21.7
 

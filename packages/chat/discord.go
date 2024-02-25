@@ -45,7 +45,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	if m.Content == "!wgconfig" {
-		// Implement Wireguard configuration provisioning here
+		// Implement WireGuard configuration provisioning here
 		return
 	}
 

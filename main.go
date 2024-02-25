@@ -4,12 +4,12 @@ import (
 	"log"
 	"sync"
 
-	"github.com/Madness-Gaming-Network/madguard/packages/api"
-	"github.com/Madness-Gaming-Network/madguard/packages/chat"
-	"github.com/Madness-Gaming-Network/madguard/packages/core"
+	"github.com/Madness-Gaming-Network/MadGuard/packages/api"
+	"github.com/Madness-Gaming-Network/MadGuard/packages/chat"
+	"github.com/Madness-Gaming-Network/MadGuard/packages/core"
 
-	// "github.com/Madness-Gaming-Network/madguard/packages/proxy"
-	"github.com/Madness-Gaming-Network/madguard/packages/vpn"
+	// "github.com/Madness-Gaming-Network/MadGuard/packages/proxy"
+	"github.com/Madness-Gaming-Network/MadGuard/packages/vpn"
 )
 
 func main() {

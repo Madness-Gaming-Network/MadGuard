@@ -1,7 +1,7 @@
 package vpn
 
 import (
-	// TODO: Which Wireguard lib?
+	// TODO: Which WireGuard lib?
 	"golang.zx2c4.com/wireguard/wgctrl" // has docs: https://pkg.go.dev/golang.zx2c4.com/wireguard/wgctrl
 	// "golang.zx2c4.com/wireguard" has no docs: https://pkg.go.dev/golang.zx2c4.com/wireguard
 	// idk yet if wgctrl can do everything we need it to

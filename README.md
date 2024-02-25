@@ -1,6 +1,8 @@
 # MadGuard
 
-<img src="./pb_public/images/madguard.png" width="512" height="512" />
+<img src="./pb_public/images/MadGuard.png" width="512" height="512" />
+
+Madness + WireGuard
 
 ## TODO
 
@@ -12,7 +14,7 @@
   ```
   - It would be helpful to automate the version incrementing part, but for now it will be manual
 - We'll also need to figure out how to automate getting the correct binaries to the VPS
-  - We could just do something like `wget https://github.com/Madness-Gaming-Network/madguard/releases/download/v0.1.0/madguard_Linux_x86_64.tar.gz`
+  - We could just do something like `wget https://github.com/Madness-Gaming-Network/MadGuard/releases/download/v0.1.0/MadGuard_Linux_x86_64.tar.gz`
   - Auth is generally a pain on remote servers, so we'll have to research or something
   - For now we can just manually `scp` the tarball/binary over
 - Set up basic Caddy config: https://github.com/caddyserver/caddy
@@ -27,7 +29,7 @@
 ## Decisions
 
 - Golang, because:
-  - Wireguard, Caddy, Pocketbase, and more are built with it
+  - WireGuard, Caddy, Pocketbase, and more are built with it
   - Way more documentation, resources, and examples
   - Simpler syntax
     - Supposedly better for ChatGPT (GitHub Copilot) prompting too?
@@ -39,10 +41,10 @@
 
 ## Potential Commands
 
-- Create/read/update/delete (CRUD) Wireguard network
+- Create/read/update/delete (CRUD) WireGuard network
   - Only for trusted users, otherwise they have to request networksk manually (automating too much early on could lead to easier abuse)
   - Inputs: Network name, users, desired expiration, ???
-- CRUD user from existing Wireguard network
+- CRUD user from existing WireGuard network
   - Inputs: Email, IP range, games, ???
 - CRUD server/session in emulator
   - Inputs: ???
@@ -52,7 +54,7 @@
 
 - Pull Discord roles and use those for permissions
   - Mirror some anonymous Discord user data in Pocketbase, like Discord ID and permissions
-- Host on same VPS as Wireguard server?
+- Host on same VPS as WireGuard server?
   - Probably not, maybe separate server?
 - Discord donation/sponsorship/boosting gives more features?
   - https://discord.com/developers/docs/monetization/overview
@@ -67,7 +69,7 @@
 
 ```
 # Download the release (requires public repo, as mentioned in TODO section)
-wget https://github.com/Madness-Gaming-Network/madguard/releases/download/v0.1.0/discord_bot_Linux_x86_64.tar.gz
+wget https://github.com/Madness-Gaming-Network/MadGuard/releases/download/v0.1.0/discord_bot_Linux_x86_64.tar.gz
 
 # Extract `discord_bot` executable from GitHub release tarball
 tar -xvzf discord_bot_Linux_x86_64.tar.gz
@@ -84,3 +86,11 @@ scp -i ~/.ssh/madness-server-ssh-key root@142.171.162.80:/root/discord_bot ./dis
 # Run it (on server)
 ./discord_bot
 ```
+
+# Contributing
+
+We don't have good guidelines for this yet; please reach out on Discord for info.
+
+# Disclaimers
+
+[WireGuard®](https://www.wireguard.com/) is a registered trademark of Jason A. Donenfeld.
